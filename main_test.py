@@ -10,25 +10,20 @@ def test_main_1():
     datastr = 'a\nf'
     sys.stdin = io.StringIO(datastr)
 
-    main.main()
+    result = main.main()
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
+    assert result == ['a', 'b', 'c', 'd', 'e', 'f']
+
     # regex_string = r'[\w,\W]*' + str(minval) + r'[\w,\W]*'
     # res = re.search(regex_string, lines[0])
-    regex_string = r'[\w,\W]*a'
-    regex_string += r'[\w,\W]*b'
-    regex_string += r'[\w,\W]*c'
-    regex_string += r'[\w,\W]*d'
-    regex_string += r'[\w,\W]*e'
-    regex_string += r'[\w,\W]*f'
-    regex_string += r'[\w,\W]*'
-    print(regex_string)
-    res = re.search(regex_string, lines[0])
-    assert res != None
-    print(res.group())
+    # print(regex_string)
+    # res = re.search(regex_string, lines[0])
+    # assert res != None
+    # print(res.group())
 
 
 def test_main_2():
@@ -37,25 +32,13 @@ def test_main_2():
     datastr = 'f\na\na\nf'
     sys.stdin = io.StringIO(datastr)
 
-    main.main()
+    result = main.main()
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    # regex_string = r'[\w,\W]*' + str(minval) + r'[\w,\W]*'
-    # res = re.search(regex_string, lines[0])
-    regex_string = r'[\w,\W]*a'
-    regex_string += r'[\w,\W]*b'
-    regex_string += r'[\w,\W]*c'
-    regex_string += r'[\w,\W]*d'
-    regex_string += r'[\w,\W]*e'
-    regex_string += r'[\w,\W]*f'
-    regex_string += r'[\w,\W]*'
-    print(regex_string)
-    res = re.search(regex_string, lines[1])
-    assert res != None
-    print(res.group())
+    assert result == ['a', 'b', 'c', 'd', 'e', 'f']
 
 
 def test_main_3():
@@ -64,20 +47,10 @@ def test_main_3():
     datastr = '1\n2\no\ns'
     sys.stdin = io.StringIO(datastr)
 
-    main.main()
+    ret = main.main()
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    # regex_string = r'[\w,\W]*' + str(minval) + r'[\w,\W]*'
-    # res = re.search(regex_string, lines[0])
-    regex_string = r'[\w,\W]*o'
-    regex_string += r'[\w,\W]*p'
-    regex_string += r'[\w,\W]*q'
-    regex_string += r'[\w,\W]*r'
-    regex_string += r'[\w,\W]*s'
-    regex_string += r'[\w,\W]*'
-    res = re.search(regex_string, lines[1])
-    assert res != None
-    print(res.group())
+    assert ret == ['o', 'p', 'q', 'r', 's']
