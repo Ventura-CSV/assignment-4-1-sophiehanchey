@@ -12,11 +12,11 @@ def main():
         
     # check order is correct    
     while ord(start) >= ord(end):
-        end = input(f'Please enter a letter that comes after {start}: ')    
+        end = input('Please enter a letter that comes after ' + {start} + ': ')
 
     # create the list
     for i in range(ord(start), ord(end) + 1):
-        newlet = chr(ord(start) + i)
+        newlet = chr(i)
         result.append(newlet)
     
     print(*result)
