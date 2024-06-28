@@ -14,8 +14,11 @@ def main():
     while ord(start) >= ord(end):
         end = input(f'Please enter a letter that comes after {start}: ')    
 
+    # create the list
+    for i in range(start, end +1):
+        newlet = chr(start + i)
+        result.append(newlet)
     
-
     print(*result)
 
     ########################################
