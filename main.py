@@ -25,7 +25,7 @@ def main():
         isAlpha = end.isalpha()
         if isAlpha: 
             ordend = ord(end)
-            isOrd = ordend <= ordstart
+            isOrd = ordend >= ordstart
 
     # create the list
     for i in range(ord(start), ord(end) + 1):
