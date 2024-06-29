@@ -1,24 +1,31 @@
 def main():
     result = []
+   
+    #check that each input is a letter 
+    start = ''
+    while not start.isalpha():
+        start = input('Please enter a letter for the start: ').lower()
     
-    while True: 
-        start = input('Enter the starting letter: ').lower()
-        end = input('Enter the ending letter: ').lower()
-        
-        # check input is letters
-        while start.isalpha() == False:
-            start = input('Please enter a letter for the start: ').lower()
-        
-        while end.isalpha() == False:
-            end = input('Please enter a letter for the end: ').lower()
-        
-        # check order is correct    
-        while ord(start) >= ord(end):
-            end = input(f'Please enter a letter that comes after {start}: ')
-            
+    ordstart = ord(start)
+
+    end = ''
+    isAlpha = False
+    isOrd = False
+    while not(isAlpha and isOrd):
+        # choose the prompt based on latest input
+        if not isAlpha:
+            prompt = 'Please enter a letter for the end: '        
         else:
-            break
+            prompt = f'Please enter a letter that comes after {start}'
         
+        # asking for input
+        end = input(prompt).lower()
+        
+        # evaluate two conditions
+        isAlpha = end.isalpha()
+        if isAlpha: 
+            ordend = ord(end)
+            isOrd = ordend <= ordstart
 
     # create the list
     for i in range(ord(start), ord(end) + 1):
